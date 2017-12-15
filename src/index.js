@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './css/style.css';
 import StorePicker from './components/StorePicker';
 import App from './components/App';
@@ -9,12 +9,12 @@ import NotFound from './components/NotFound';
 
 const Root = () => {
   return (
-    <BrowserRouter>
+  <BrowserRouter>
     <div>
       <Switch>
-      <Route exact path="/" component={StorePicker} />
-      <Route path="/about" component={App} />
-      <Route component={NotFound} />
+        <Route exact path="/" component={StorePicker} />
+        <Route path="/about" component={App} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   </BrowserRouter>
