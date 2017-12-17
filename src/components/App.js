@@ -18,6 +18,28 @@ class App extends React.Component {
     };
   }
 
+  componentWillMount() {
+    const localFishesStorageRef = localStorage.getItem(`fishes-${this.props.match.params.storeId}`);
+    const localOrderStorageRef = localStorage.getItem(`order-${this.props.match.params.storeId}`);
+
+    if(localFishesStorageRef) {
+      this.setState({
+        fishes: JSON.parse(localFishesStorageRef)
+      });
+    }
+
+    if(localOrderStorageRef) {
+      this.setState({
+        order: JSON.parse(localOrderStorageRef)
+      });
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem(`fishes-${this.props.match.params.storeId}`, JSON.stringify(nextState.fishes));
+    localStorage.setItem(`order-${this.props.match.params.storeId}`, JSON.stringify(nextState.order));
+  }
+
   addFish(fish) {
     const fishes = {...this.state.fishes};
     const timeStamp = Date.now();
